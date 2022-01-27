@@ -4,7 +4,9 @@ import cl.mobdev.challenge.domain.Location;
 import cl.mobdev.challenge.domain.Character;
 import cl.mobdev.challenge.gateway.model.ApiCharacter;
 import cl.mobdev.challenge.gateway.model.ApiLocation;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CharacterToCharacterResponseMapper {
 
     public Character mapper(ApiCharacter apiCharacter, ApiLocation apiLocation){
@@ -26,3 +28,10 @@ public class CharacterToCharacterResponseMapper {
         return characterResponse;
     }
 }
+// Test
+// 1.-
+// 2.-
+// 3.-
+// 4.-
+// 5.-
+// 6.-

@@ -16,8 +16,15 @@ public class GetCharacterUseCase {
     public Character execute(String id){
         Character character = rickAndMortyGateway.getApiCharacter(id);
         if ("Dead".equals(character.getStatus())){
-            throw new DeadException("Personaje muerto");
+            throw new DeadException("El Personaje está muerto !!!!");
         }
         return rickAndMortyGateway.getApiCharacter(id);
     }
 }
+// Test
+// 1.- Debe devolver un Character cuando el Status es Alive
+// 2.- Debe devolver un DeadException cuando el Status es Dead
+// 3.- Debe devolver un UnknownException cuando el Status es Unknown
+// 4.-
+// 5.-
+// 6.-
