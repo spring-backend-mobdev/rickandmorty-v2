@@ -10,20 +10,44 @@ class ApiOriginTest {
     @Test
     void name() {
 
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+
     }
 
     @Test
     void name2() {
+
+        // GIVEN
+
+        // WHEN
+
+        // THEN
 
     }
 
     @Test
     void name3() {
 
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+
     }
 
     @Test
     void name4() {
+
+        // GIVEN
+
+        // WHEN
+
+        // THEN
 
     }
 

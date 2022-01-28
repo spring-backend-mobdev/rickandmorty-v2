@@ -9,10 +9,22 @@ class ApiLocationTest {
     @Test
     void id_not_found() {
 
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+
     }
 
     @Test
     void url_is_empty() {
+
+        // GIVEN
+
+        // WHEN
+
+        // THEN
 
     }
 
@@ -20,6 +32,7 @@ class ApiLocationTest {
     void url_is_null() {
 
     }
+
 
     @Test
     void name4() {

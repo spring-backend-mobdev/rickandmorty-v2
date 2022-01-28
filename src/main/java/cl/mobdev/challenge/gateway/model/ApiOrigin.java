@@ -21,6 +21,7 @@ public class ApiOrigin {
         this.url = url;
     }
 }
+
 // Test
 // 1.-
 // 2.-

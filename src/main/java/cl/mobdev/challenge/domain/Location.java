@@ -41,6 +41,7 @@ public class Location {
         this.residents = residents;
     }
 }
+
 // Test
 // 1.-
 // 2.-

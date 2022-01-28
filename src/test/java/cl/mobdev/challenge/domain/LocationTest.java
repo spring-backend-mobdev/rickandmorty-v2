@@ -10,6 +10,12 @@ class LocationTest {
     @Test
     void id_not_found() {
 
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+
     }
 
     @Test

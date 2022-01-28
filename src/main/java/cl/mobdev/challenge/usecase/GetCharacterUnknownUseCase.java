@@ -5,18 +5,18 @@ import cl.mobdev.challenge.gateway.RickAndMortyGateway;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetCharacterUseCase {
+public class GetCharacterUnknownUseCase {
 
     private final RickAndMortyGateway rickAndMortyGateway;
 
-    public GetCharacterUseCase(RickAndMortyGateway rickAndMortyGateway) {
+    public GetCharacterUnknownUseCase(RickAndMortyGateway rickAndMortyGateway) {
         this.rickAndMortyGateway = rickAndMortyGateway;
     }
 
     public Character execute(String id){
         Character character = rickAndMortyGateway.getApiCharacter(id);
-        if ("Dead".equals(character.getStatus())){
-            throw new DeadException("El Personaje está muerto !!!!");
+        if ("unknown".equals(character.getStatus())){
+            throw new DeadException("El Personaje no tiene Status.");
         }
         return rickAndMortyGateway.getApiCharacter(id);
     }

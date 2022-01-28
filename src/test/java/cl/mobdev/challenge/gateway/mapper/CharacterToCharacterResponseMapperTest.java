@@ -10,10 +10,22 @@ class CharacterToCharacterResponseMapperTest {
     @Test
     void name() {
 
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+
     }
 
     @Test
     void name2() {
+
+        // GIVEN
+
+        // WHEN
+
+        // THEN
 
     }
 

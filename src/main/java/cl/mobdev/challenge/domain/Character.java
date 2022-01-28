@@ -1,5 +1,7 @@
 package cl.mobdev.challenge.domain;
 
+import cl.mobdev.challenge.usecase.GetCharacterUnknownUseCase;
+
 public class Character {
 
     private int id;
@@ -65,7 +67,12 @@ public class Character {
     public void setOrigin(Location origin) {
         this.origin = origin;
     }
+
+    public int getStatusCodeValue(GetCharacterUnknownUseCase getCharacterUnknownUseCase) {
+        return id;
+    }
 }
+
 // Test
 // 1.-
 // 2.-

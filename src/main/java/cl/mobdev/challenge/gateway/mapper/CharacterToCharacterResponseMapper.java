@@ -28,6 +28,7 @@ public class CharacterToCharacterResponseMapper {
         return characterResponse;
     }
 }
+
 // Test
 // 1.-
 // 2.-

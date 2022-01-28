@@ -9,5 +9,4 @@ public class RickandmortyV2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(RickandmortyV2Application.class, args);
 	}
-
 }

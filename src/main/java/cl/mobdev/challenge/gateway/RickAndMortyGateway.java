@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class RickAndMortyGateway {
 
+
     private final RestTemplate restTemplate;
     private final String apiUrl;
     private final CharacterToCharacterResponseMapper characterResponseMapper;

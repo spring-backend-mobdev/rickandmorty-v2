@@ -73,6 +73,7 @@ public class ApiCharacter {
         this.location = location;
     }
 
+
     public ApiOrigin getOrigin() {
         return origin;
     }
@@ -113,6 +114,7 @@ public class ApiCharacter {
         this.created = created;
     }
 }
+
 // Test
 // 1.- Testear nombre de cada personaje por id (Rick Sanchez = Id 1)
 // 2.- Testear nombre indistinamente May. o Min.
