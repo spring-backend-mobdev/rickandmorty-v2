@@ -1,11 +1,31 @@
 package cl.mobdev.challenge.usecase;
 
-import org.junit.jupiter.api.Test;
+import cl.mobdev.challenge.usecase.exception.DeadException;
+import org.junit.jupiter.api.*;
 import cl.mobdev.challenge.domain.Character;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeadExceptionTest {
 
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
     @Test
     void test_message_DeadException() {
 

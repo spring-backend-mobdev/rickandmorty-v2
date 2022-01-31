@@ -1,12 +1,32 @@
 package cl.mobdev.challenge.gateway.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiCharacterTest {
+
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
 
     @Test
     void getName_id_number_1() {
@@ -35,6 +55,7 @@ class ApiCharacterTest {
         String real2 = apiCharacter.getName().toLowerCase(Locale.ROOT);
         assertEquals(expected2, real2);
     }
+
 
 
     @Test

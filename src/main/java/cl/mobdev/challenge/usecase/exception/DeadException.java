@@ -1,4 +1,4 @@
-package cl.mobdev.challenge.usecase;
+package cl.mobdev.challenge.usecase.exception;
 
 public class DeadException extends RuntimeException{
 

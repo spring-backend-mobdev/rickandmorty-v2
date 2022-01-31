@@ -16,6 +16,7 @@ class CharacterToCharacterResponseMapperTest {
 
         // THEN
 
+        assertEquals(true, true);
     }
 
     @Test

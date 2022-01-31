@@ -3,8 +3,7 @@ package cl.mobdev.challenge.gateway;
 import cl.mobdev.challenge.gateway.mapper.CharacterToCharacterResponseMapper;
 import cl.mobdev.challenge.gateway.model.ApiCharacter;
 import cl.mobdev.challenge.domain.Character;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -36,6 +35,20 @@ class RickAndMortyGatewayTest {
         this.rickAndMortyGateway = new RickAndMortyGateway(restTemplate, "apiUrl", characterResponseMapper);
     }
 
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
     @Test
     void name() {
         ApiCharacter apiCharacter = new ApiCharacter();

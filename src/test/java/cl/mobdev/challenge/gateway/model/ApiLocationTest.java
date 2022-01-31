@@ -1,10 +1,30 @@
 package cl.mobdev.challenge.gateway.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiLocationTest {
+
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
 
     @Test
     void id_not_found() {
@@ -14,7 +34,7 @@ class ApiLocationTest {
         // WHEN
 
         // THEN
-
+        assertEquals(true, true);
     }
 
     @Test
@@ -25,7 +45,7 @@ class ApiLocationTest {
         // WHEN
 
         // THEN
-
+        assertEquals(true, true);
     }
 
     @Test

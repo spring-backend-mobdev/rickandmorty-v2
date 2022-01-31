@@ -1,10 +1,30 @@
 package cl.mobdev.challenge.gateway.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiOriginTest {
+
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
 
 
     @Test
@@ -15,6 +35,7 @@ class ApiOriginTest {
         // WHEN
 
         // THEN
+        assertEquals(true, true);
 
     }
 

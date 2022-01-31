@@ -71,6 +71,19 @@ public class Character {
     public int getStatusCodeValue(GetCharacterUnknownUseCase getCharacterUnknownUseCase) {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", species='" + species + '\'' +
+                ", type='" + type + '\'' +
+                ", episode_count=" + episode_count +
+                ", origin=" + origin +
+                '}';
+    }
 }
 
 // Test

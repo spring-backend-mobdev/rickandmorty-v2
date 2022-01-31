@@ -1,6 +1,7 @@
 package cl.mobdev.challenge.usecase;
 
 import cl.mobdev.challenge.gateway.RickAndMortyGateway;
+import cl.mobdev.challenge.usecase.exception.DeadException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import cl.mobdev.challenge.domain.Character;

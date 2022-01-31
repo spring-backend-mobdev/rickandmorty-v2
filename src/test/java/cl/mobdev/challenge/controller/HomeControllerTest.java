@@ -29,7 +29,7 @@ class HomeControllerTest {
 
     @BeforeEach
     void setUp() {
-        homeController = new HomeController(getCharacterUseCase); // va a crear una nueva instancia antes de cada test
+       //  homeController = new HomeController(getCharacterUseCase); // va a crear una nueva instancia antes de cada test
     }
 
     @Test
