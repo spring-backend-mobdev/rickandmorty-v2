@@ -158,6 +158,14 @@ class RickAndMortyGatewayTest {
         // THEN
 
     }
+
+    @Test
+    void getApiCharacter() {
+    }
+
+    @Test
+    void getApiLocation() {
+    }
 }
 
 // Test

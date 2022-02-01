@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DeadExceptionTest {
 
+
     @BeforeEach
     void setUp() {
 
@@ -19,13 +20,14 @@ class DeadExceptionTest {
 
     @BeforeAll
     static void beforeAll() {
-
+        System.out.println("Starting Testing with JUnit 5");
     }
 
     @AfterAll
     static void afterAll() {
-
+        System.out.println("End of testing with JUnit5");
     }
+
     @Test
     void test_message_DeadException() {
 
