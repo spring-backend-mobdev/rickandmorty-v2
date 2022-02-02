@@ -11,8 +11,8 @@ public class IsCharactersEarthlingUseCase {
         boolean request = true;
         String nameOrigin = character.getOrigin().getName();
         if (null == nameOrigin || "Earth".equals(nameOrigin)) {
-            request = true;
+            return request;
     }
-        return true;
-}
+        return false;
+    }
 }

@@ -36,21 +36,19 @@ class IsCharactersEarthlingUseCaseTest {
     @DisplayName("Should return true when character come from earth")
     void should_return_true_when_character_come_from_earth() {
         boolean expected = true;
-
         //GIVEN
         Character character = new Character();
         Location origin = new Location();
         origin.setName("Earth");
         character.setOrigin(origin);
-
         //WHEN
         boolean response = this.useCaseEarthling.check(character);
-
         //THEN
         assertEquals(expected, response);
     }
 
     @Test
+    @DisplayName("Should return false when character is not from earth")
     void should_return_false_when_character_is_not_from_earth() {
         boolean expected = true;
 
@@ -59,22 +57,19 @@ class IsCharactersEarthlingUseCaseTest {
         Location origin = new Location();
         origin.setName(character.getName());
         character.setOrigin(origin);
-
         //WHEN
         boolean response = this.useCaseEarthling.check(character);
-
         //THEN
         assertEquals(expected, response);
     }
 
     @Test
+    @DisplayName("Should return false when character locations is null")
     void should_return_false_when_character_locations_is_null() {
-        boolean expected = true;
-
+        boolean expected = false;
         //GIVEN
         Character character = new Character();
-        Location origin = new Location();
-        origin.setName("");
+        Location origin = null;
         character.setOrigin(origin);
 
         //WHEN
@@ -82,11 +77,13 @@ class IsCharactersEarthlingUseCaseTest {
 
         //THEN
         assertEquals(expected, response);
+        //assertNull(origin);
     }
 
     @Test
+    @DisplayName("Should return false when character origin is unknown")
     void should_return_false_when_character_origin_is_unknown() {
-        boolean expected = true;
+        boolean expected = false;
 
         //GIVEN
         Character character = new Character();
@@ -99,6 +96,5 @@ class IsCharactersEarthlingUseCaseTest {
 
         //THEN
         assertEquals(expected, response);
-
     }
 }
