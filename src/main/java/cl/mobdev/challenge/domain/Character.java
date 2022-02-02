@@ -8,6 +8,7 @@ public class Character {
     private String name;
     private String status;
     private String species;
+    private String gender;
     private String type;
     private int episode_count;
     private Location origin;
@@ -70,6 +71,14 @@ public class Character {
 
     public int getStatusCodeValue(GetCharacterUnknownUseCase getCharacterUnknownUseCase) {
         return id;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override

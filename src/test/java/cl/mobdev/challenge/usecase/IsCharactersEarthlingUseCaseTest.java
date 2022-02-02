@@ -50,12 +50,12 @@ class IsCharactersEarthlingUseCaseTest {
     @Test
     @DisplayName("Should return false when character is not from earth")
     void should_return_false_when_character_is_not_from_earth() {
-        boolean expected = true;
+        boolean expected = false;
 
         //GIVEN
         Character character = new Character();
         Location origin = new Location();
-        origin.setName(character.getName());
+        origin.setName("Marte");
         character.setOrigin(origin);
         //WHEN
         boolean response = this.useCaseEarthling.check(character);
@@ -67,6 +67,7 @@ class IsCharactersEarthlingUseCaseTest {
     @DisplayName("Should return false when character locations is null")
     void should_return_false_when_character_locations_is_null() {
         boolean expected = false;
+
         //GIVEN
         Character character = new Character();
         Location origin = null;
@@ -77,7 +78,6 @@ class IsCharactersEarthlingUseCaseTest {
 
         //THEN
         assertEquals(expected, response);
-        //assertNull(origin);
     }
 
     @Test

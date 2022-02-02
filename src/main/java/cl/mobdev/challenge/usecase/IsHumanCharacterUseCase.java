@@ -18,8 +18,7 @@ public class IsHumanCharacterUseCase {
     public boolean execute(String id) {
         Character character;
         character = humanCharacterGateway.findCharacter(id);
-        character.setSpecies(id);
-        if (null == id || "Human".equals(character.getSpecies())) {
+        if (null != character && "Human".equals(character.getSpecies())) {
             return true;
         }
         return false;

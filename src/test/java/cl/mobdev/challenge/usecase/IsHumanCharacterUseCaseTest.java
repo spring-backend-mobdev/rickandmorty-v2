@@ -62,11 +62,11 @@ class IsHumanCharacterUseCaseTest {
         boolean expected = false;
 
         //GIVEN
-        String  testId = "100";
+        String  testId = "1";
         Character characterMock = new Character();
         characterMock.setId(1);
         characterMock.setName("Rick Sanchez");
-        characterMock.setSpecies("Human");
+        characterMock.setSpecies("Robot");
         Mockito.when(humanCharacterGateway.findCharacter(testId)).thenReturn(characterMock);
 
         //WHEN
@@ -82,10 +82,12 @@ class IsHumanCharacterUseCaseTest {
         boolean expected = false;
 
         //GIVEN
-        String  testId = " ";
-        Character characterMock = new Character();
+        String  testId = "12";
+        Character characterMock = null;
 
-        Mockito.when(humanCharacterGateway.findCharacter(testId)).thenReturn(characterMock);
+        Mockito
+                .when(humanCharacterGateway.findCharacter(testId))
+                .thenReturn(characterMock);
 
         //WHEN
         boolean real = isHumanCharacterUseCase.execute(testId);

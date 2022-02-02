@@ -8,23 +8,21 @@ package cl.mobdev.challenge.usecase;
 
 
 import cl.mobdev.challenge.domain.Character;
-import cl.mobdev.challenge.gateway.RickAndMortyGateway;
-import cl.mobdev.challenge.usecase.exception.GenderException;
+import cl.mobdev.challenge.gateway.HumanCharacterGateway;
 
 public class GetFemaleCharacterUseCase {
 
-    private final RickAndMortyGateway rickAndMortyGateway;
+    private HumanCharacterGateway humanCharacterGateway;
 
-    public GetFemaleCharacterUseCase(RickAndMortyGateway rickAndMortyGateway) {
-        this.rickAndMortyGateway = rickAndMortyGateway;
+    public GetFemaleCharacterUseCase(HumanCharacterGateway humanCharacterGateway) {
+        this.humanCharacterGateway = humanCharacterGateway;
     }
 
-
     public Character execute(String id) {
-        Character character = rickAndMortyGateway.getApiCharacter(id);
-        if (!"female".equals(character.getGender())) {
-            throw new GenderException("El character no es mujer");
+        Character character = humanCharacterGateway.findCharacter(id);
+        if ("Female".equals(character.getGender())) {
+
         }
-        return rickAndMortyGateway.getApiCharacter(id);
+        return character;
     }
 }
