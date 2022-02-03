@@ -47,7 +47,7 @@ class GetCharacterUseCaseTest {
 
     @Test
     void should_throw_DeadException_when_character_status_is_Dead() {
-        String exceptionMessageExpected = "El Personaje está muerto !!!!";
+        String exceptionMessageExpected = "Character is dead!!!!";
 
         //GIVEN
         Character characterMock = new Character();

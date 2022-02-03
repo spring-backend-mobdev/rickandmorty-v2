@@ -9,6 +9,7 @@ package cl.mobdev.challenge.usecase;
 
 import cl.mobdev.challenge.domain.Character;
 import cl.mobdev.challenge.gateway.HumanCharacterGateway;
+import cl.mobdev.challenge.usecase.exception.GenderException;
 
 public class GetFemaleCharacterUseCase {
 
@@ -20,8 +21,12 @@ public class GetFemaleCharacterUseCase {
 
     public Character execute(String id) {
         Character character = humanCharacterGateway.findCharacter(id);
-        if ("Female".equals(character.getGender())) {
-
+        if ("Female".equals(character.getGender(id))) {
+            return character;
+        } else if (!"Female".equals(character.getGender(id))){
+            throw new GenderException("The character is not a female");
+        } else if (null == character){
+            throw new GenderException("The character is null");
         }
         return character;
     }

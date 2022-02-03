@@ -73,7 +73,7 @@ public class Character {
         return id;
     }
 
-    public String getGender() {
+    public String getGender(String gender) {
         return gender;
     }
 

@@ -17,7 +17,7 @@ public class GetCharacterUnknownUseCase {
     public Character execute(String id){
         Character character = rickAndMortyGateway.getApiCharacter(id);
         if ("unknown".equals(character.getStatus())){
-            throw new DeadException("El Personaje no tiene Status.");
+            throw new DeadException("Character has no Status.");
         }
         return rickAndMortyGateway.getApiCharacter(id);
     }

@@ -17,7 +17,7 @@ public class GetCharacterUseCase {
     public Character execute(String id){
         Character character = rickAndMortyGateway.getApiCharacter(id);
         if ("Dead".equals(character.getStatus())){
-            throw new DeadException("El Personaje está muerto !!!!");
+            throw new DeadException("Character is dead!!!!");
         }
         return rickAndMortyGateway.getApiCharacter(id);
     }

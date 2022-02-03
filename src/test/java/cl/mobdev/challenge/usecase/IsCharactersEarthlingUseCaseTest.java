@@ -55,7 +55,7 @@ class IsCharactersEarthlingUseCaseTest {
         //GIVEN
         Character character = new Character();
         Location origin = new Location();
-        origin.setName("Marte");
+        origin.setName("Marth");
         character.setOrigin(origin);
         //WHEN
         boolean response = this.useCaseEarthling.check(character);
