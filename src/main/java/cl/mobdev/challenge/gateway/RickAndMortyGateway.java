@@ -26,23 +26,18 @@ public class RickAndMortyGateway {
 
     public Character getApiCharacter(String id){
         Character character;
-        ResponseEntity<ApiCharacter> apiCharacter= restTemplate.getForEntity(apiUrl+ id , ApiCharacter.class);
-        character = characterResponseMapper.mapper(apiCharacter.getBody(), getApiLocation(apiCharacter.getBody()));
+        ResponseEntity<ApiCharacter> apiCharacter= restTemplate
+                .getForEntity(apiUrl + id , ApiCharacter.class);
+        ResponseEntity<ApiLocation> apiLocation = getApiLocation(apiCharacter.getBody());
+        character = characterResponseMapper
+                .mapper(apiCharacter.getBody(), apiLocation.getBody());
         return character;
     }
 
-    public ApiLocation getApiLocation(ApiCharacter apiCharacter){
-        ApiLocation location= new ApiLocation();
-        if (apiCharacter.getOrigin() != null && !"".equals(apiCharacter.getOrigin().getUrl())){
-            location = restTemplate.getForObject(apiCharacter.getOrigin().getUrl(), ApiLocation.class);
+    public ResponseEntity<ApiLocation>  getApiLocation(ApiCharacter apiCharacter){
+        if (null != apiCharacter.getOrigin() && !"".equals(apiCharacter.getOrigin().getUrl())){
+            return restTemplate.getForEntity(apiCharacter.getOrigin().getUrl(), ApiLocation.class);
         }
-        return location;
+        return null;
     }
 }
-// Test
-// 1.- Comparar que la api llamada en application.properties es la misma que la api R&M
-// 2.- If - Si la URL de Origin de apiCharacter es vacía.
-// 3.- If - Si la URL de Origin de apiCharacter está con datos.
-// 4.-
-// 5.-
-// 6.-

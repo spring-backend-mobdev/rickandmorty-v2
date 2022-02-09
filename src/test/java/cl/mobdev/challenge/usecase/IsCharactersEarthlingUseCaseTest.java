@@ -11,6 +11,7 @@ class IsCharactersEarthlingUseCaseTest {
     private IsCharactersEarthlingUseCase useCaseEarthling;
     private Character character = new Character();
 
+
     @BeforeEach
     void setUp() {
         System.out.println("1.- Starting of JUnit5 method test");
@@ -35,6 +36,7 @@ class IsCharactersEarthlingUseCaseTest {
     @Test
     @DisplayName("Should return true when character come from earth")
     void should_return_true_when_character_come_from_earth() {
+        System.out.println("Should return true when character come from earth");
         boolean expected = true;
         //GIVEN
         Character character = new Character();

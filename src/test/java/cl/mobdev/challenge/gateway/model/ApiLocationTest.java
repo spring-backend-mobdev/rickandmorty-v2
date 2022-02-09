@@ -1,14 +1,17 @@
 package cl.mobdev.challenge.gateway.model;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Nested;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiLocationTest {
 
+    private ApiLocation apiLocation;
+
     @BeforeEach
     void setUp() {
-
+        apiLocation = new ApiLocation();
     }
 
     @AfterEach
@@ -27,6 +30,7 @@ class ApiLocationTest {
     }
 
     @Test
+    @Nested
     void id_not_found() {
 
         // GIVEN

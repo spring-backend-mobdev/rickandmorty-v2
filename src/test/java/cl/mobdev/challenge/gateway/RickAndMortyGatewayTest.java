@@ -1,23 +1,30 @@
 package cl.mobdev.challenge.gateway;
-
+import cl.mobdev.challenge.domain.Location;
 import cl.mobdev.challenge.gateway.mapper.CharacterToCharacterResponseMapper;
 import cl.mobdev.challenge.gateway.model.ApiCharacter;
 import cl.mobdev.challenge.domain.Character;
+import cl.mobdev.challenge.gateway.model.ApiLocation;
+import cl.mobdev.challenge.gateway.model.ApiOrigin;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class RickAndMortyGatewayTest {
+
+    private String apiUrl = "http://some-url";
+    private ApiCharacter apiCharacter;
+    private ApiLocation apiLocation;
 
     @InjectMocks
     private RickAndMortyGateway rickAndMortyGateway;
@@ -31,88 +38,70 @@ class RickAndMortyGatewayTest {
 
     @BeforeEach
     void setUp(){
-        ReflectionTestUtils.setField(rickAndMortyGateway, "apiUrl", "https://rickandmortyapi.com/api/character/");
-        this.rickAndMortyGateway = new RickAndMortyGateway(restTemplate, "apiUrl", characterResponseMapper);
+        this.rickAndMortyGateway = new RickAndMortyGateway(restTemplate,
+                apiUrl,
+                characterResponseMapper);
+
+        apiCharacter = new ApiCharacter();
+        apiLocation = new ApiLocation();
     }
 
-    @AfterEach
-    void tearDown() {
-
-    }
-
-    @BeforeAll
-    static void beforeAll() {
-
-    }
-
-    @AfterAll
-    static void afterAll() {
-
-    }
     @Test
-    void name() {
+    @MockitoSettings(strictness = Strictness.WARN)
+    void should_return_character_when_call_external_api() {
+
+        Character expected = new Character();
+        Location location = new Location();
+        expected.setOrigin(location);
+
         ApiCharacter apiCharacter = new ApiCharacter();
+        ApiLocation apiLocation = new ApiLocation();
+        ApiOrigin apiOrigin = new ApiOrigin();
+
+        String urlLocationMock = "http//some-location";
+        apiOrigin.setUrl(urlLocationMock);
+        apiCharacter.setOrigin(apiOrigin);
+
         apiCharacter.setId(1);
+        apiCharacter.setName("Rick Sanchez");
+        apiLocation.setName("Earth");
+        apiLocation.setUrl(urlLocationMock);
 
         // GIVEN
         String idMock = "1";
-        Mockito
-                .when(restTemplate.getForEntity("apiUrl" + idMock, ApiCharacter.class))
+
+        when(restTemplate
+                .getForEntity(apiUrl + idMock, ApiCharacter.class))
                 .thenReturn(new ResponseEntity(apiCharacter, HttpStatus.OK));
+
+        when(restTemplate
+                .getForEntity(urlLocationMock, ApiLocation.class))
+                .thenReturn(new ResponseEntity(apiLocation, HttpStatus.OK));
+
+        when(characterResponseMapper.mapper(apiCharacter, apiLocation))
+                .thenReturn(expected);
 
         // WHEN
         Character character = rickAndMortyGateway.getApiCharacter(idMock);
 
         // THEN
-        assertEquals(apiCharacter, character);
-
+        assertEquals(expected,  character);
     }
 
     @Test
-    void verify_UrlOrigin_the_ApiCharacter_is_empty() {
+    void should_return_mocked_object_when_call_get_Character() {
+        Character character = new Character();
+        character.setId(1);
+        character.setName("Rick Sanchez");
+        character.setGender("Male");
 
-        // GIVEN
+        when(restTemplate
+                .getForEntity("http://localhost:9000/character/1", Character.class))
+                .thenReturn(new ResponseEntity(character, HttpStatus.OK));
 
-        // WHEN
+            //Character character1 = ;
 
-        // THEN
-
-    }
-
-    @Test
-    void verify_UrlOrigin_the_ApiCharacter_has_data() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void compare_to_apiRM_is_equals_apiApplicationProperties() {
-
-        String characterUrl;
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-
-    @Test
-    void name2() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
+            assertEquals(character, true);
     }
 
     @Test
@@ -124,10 +113,11 @@ class RickAndMortyGatewayTest {
 
         // THEN
 
+
     }
 
     @Test
-    void name4() {
+    void should_return_() {
 
         // GIVEN
 
@@ -135,41 +125,10 @@ class RickAndMortyGatewayTest {
 
         // THEN
 
-    }
-
-    @Test
-    void name6() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name5() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void getApiCharacter() {
-    }
-
-    @Test
-    void getApiLocation() {
     }
 }
 
 // Test
-// 1.- Comparar que la api llamada en application.properties es la misma que la api R&M
-// 2.- If - Si la URL de Origin de apiCharacter es vacía.
-// 3.- If - Si la URL de Origin de apiCharacter está con datos.
+// 1.- Status 200
+// 3.-
 // 4.-

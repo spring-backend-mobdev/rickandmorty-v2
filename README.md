@@ -1,11 +1,6 @@
 # Documentation Testing
 
-- [Hola](www.oracle.com)
-
-
 ## Actividades
-
-- Craer 
 
 
 ## Apuntes

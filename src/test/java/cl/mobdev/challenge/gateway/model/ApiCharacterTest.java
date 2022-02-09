@@ -8,9 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ApiCharacterTest {
 
+    private ApiCharacter apiCharacter;
+
     @BeforeEach
     void setUp() {
-
+        apiCharacter = new ApiCharacter();
     }
 
     @AfterEach
@@ -30,7 +32,6 @@ class ApiCharacterTest {
 
     @Test
     void getName_id_number_1() {
-        ApiCharacter apiCharacter = new ApiCharacter();
         apiCharacter.setName("Rick Sanchez");
         String expected = "Rick Sanchez";
         String real = apiCharacter.getName();
@@ -39,7 +40,6 @@ class ApiCharacterTest {
 
     @Test
     void getName() {
-        ApiCharacter apiCharacter = new ApiCharacter();
         apiCharacter.setName("Rick Sánchez");
         String expected = "Rick Sánchez";
         String real = apiCharacter.getName();

@@ -12,23 +12,26 @@ import cl.mobdev.challenge.usecase.exception.LocationException;
 
 public class IsLocationIsOriginUseCase {
     public boolean execute(ApiCharacter apiCharacter) {
-        boolean request = true;
-        String location = apiCharacter.getLocation().getName();
-        String origin = apiCharacter.getOrigin().getName();
+        String location;
+        String origin;
 
-        /** switch (null != apiCharacter && !location.equals(origin)  && !origin.equals(location)) {
-        }*/
+        if (null == apiCharacter.getLocation() || null == apiCharacter.getOrigin()) {
+            throw new LocationException("Location or Origin is Null");
+        }
 
-        if (null != apiCharacter && !location.equals(origin)  && !origin.equals(location)) {   // location != origin
-            return false;
+        location = apiCharacter.getLocation().getName();
+        origin = apiCharacter.getOrigin().getName();
+
+       if (location.equals(origin) && !"unknown".equals(origin) && !"unknown".equals(location)) {
+            return true;
+        } else if ("unknown".equals(origin) && "unknown".equals(location)) {
+            throw new LocationException("The location and origin of the character is unknown.");
         } else if ("unknown".equals(origin)) {
             throw new LocationException("The origin of the character is unknown.");
         } else if ("unknown".equals(location)) {
             throw new LocationException("The location of the character is unknown.");
-        } else if ("unknown".equals(origin) && "unknown".equals(location)) {
-            throw new LocationException("The location and origin of the character is unknown.");
         }
-        return request;
-    }
 
+       return false;
+    }
 }

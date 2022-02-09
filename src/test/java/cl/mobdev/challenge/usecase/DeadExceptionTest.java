@@ -40,32 +40,25 @@ class DeadExceptionTest {
         String expected = "El Personaje está muerto !!!!";
 
         assertEquals(actual, expected);
-
     }
 
     @Test
     void name2() {
-
     }
 
     @Test
     void name3() {
-
     }
 
     @Test
     void name4() {
-
     }
 
     @Test
     void name6() {
-
     }
 
     @Test
     void name5() {
-
     }
-
 }

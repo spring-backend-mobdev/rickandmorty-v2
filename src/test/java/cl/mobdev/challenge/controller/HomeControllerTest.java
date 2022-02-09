@@ -10,8 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +27,7 @@ class HomeControllerTest {
 
     @BeforeEach
     void setUp() {
-       //  homeController = new HomeController(getCharacterUseCase); // va a crear una nueva instancia antes de cada test
+       //homeController = new HomeController(); // va a crear una nueva instancia antes de cada test
     }
 
     @Test

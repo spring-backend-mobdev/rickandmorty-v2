@@ -18,6 +18,8 @@ public class HomeController {
         this.charactersEarthlingUseCase = charactersEarthlingUseCase;
     }
 
+
+
     @GetMapping("character/{id}")
     public Character getExternalApi(@PathVariable String id){
         return getCharacterUseCase.execute(id);

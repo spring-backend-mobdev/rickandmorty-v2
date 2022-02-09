@@ -6,9 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ApiOriginTest {
 
+    private ApiOrigin apiOrigin;
+
     @BeforeEach
     void setUp() {
-
+        apiOrigin = new ApiOrigin();
     }
 
     @AfterEach
