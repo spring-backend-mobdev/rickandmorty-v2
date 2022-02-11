@@ -13,22 +13,8 @@ class DeadExceptionTest {
 
     }
 
-    @AfterEach
-    void tearDown() {
-
-    }
-
-    @BeforeAll
-    static void beforeAll() {
-        System.out.println("Starting Testing with JUnit 5");
-    }
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("End of testing with JUnit5");
-    }
-
     @Test
+    @Disabled
     void test_message_DeadException() {
 
         Character character = new Character();
@@ -40,25 +26,5 @@ class DeadExceptionTest {
         String expected = "El Personaje está muerto !!!!";
 
         assertEquals(actual, expected);
-    }
-
-    @Test
-    void name2() {
-    }
-
-    @Test
-    void name3() {
-    }
-
-    @Test
-    void name4() {
-    }
-
-    @Test
-    void name6() {
-    }
-
-    @Test
-    void name5() {
     }
 }

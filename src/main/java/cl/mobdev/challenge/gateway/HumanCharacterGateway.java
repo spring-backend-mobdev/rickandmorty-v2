@@ -8,5 +8,6 @@ public class HumanCharacterGateway {
 
     public Character findCharacter(String id){
         return character;
+
     }
 }

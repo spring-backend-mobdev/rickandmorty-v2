@@ -22,11 +22,3 @@ public class GetCharacterUseCase {
         return rickAndMortyGateway.getApiCharacter(id);
     }
 }
-
-// Test
-// 1.- Debe devolver un Character cuando el Status es Alive
-// 2.- Debe devolver un DeadException cuando el Status es Dead
-// 3.- Debe devolver un UnknownException cuando el Status es Unknown
-// 4.-
-// 5.-
-// 6.-
