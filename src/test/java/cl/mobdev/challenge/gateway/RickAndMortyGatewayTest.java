@@ -119,10 +119,34 @@ class RickAndMortyGatewayTest {
     }
 
     @Test
+    @MockitoSettings(strictness = Strictness.WARN)
+    @DisplayName("Should return origin unknown when url is empty")
     void should_return_origin_unknown_when_url_is_empty() {
         String expected = "unknown";
+        //expected.setOrigin(location);
+        final int numberOfInvocationsOfMapperExpected = 1;
 
+        String urlLocationMock = "http//some-location-origin";
+        apiOrigin.setUrl(urlLocationMock);
+        characterMock.setOrigin(apiOrigin);
 
+        apiLocation.setUrl(urlLocationMock);
 
+        //GIVEN
+        String urlMock = "";
+        when(restTemplate
+                .getForEntity(apiUrl + urlMock, ApiCharacter.class))
+                .thenReturn(new ResponseEntity(characterMock, HttpStatus.OK));
+
+        when(restTemplate
+                .getForEntity(urlLocationMock, ApiLocation.class))
+                .thenReturn(new ResponseEntity(apiLocation, HttpStatus.OK));
+
+        // WHEN
+        Character character = rickAndMortyGateway.getApiCharacter(urlMock);
+
+        // THEN
+        verify(characterResponseMapper, times(numberOfInvocationsOfMapperExpected))
+                .mapper(characterMock, apiLocation);
     }
 }
