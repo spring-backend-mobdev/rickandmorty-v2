@@ -26,9 +26,9 @@ public class CharacterToCharacterResponseMapper {
         Location locationResponse = new Location();
 
         if (null == apiLocation || "".equals(apiLocation.getUrl())) {
-            locationResponse.setUrl("unknownNullOrEmpty");
-            locationResponse.setName("unknownNullOrEmpty");
-            locationResponse.setDimension("unknownNullOrEmpty");
+            locationResponse.setUrl("unknown");
+            locationResponse.setName("unknown");
+            locationResponse.setDimension("unknown");
             return locationResponse;
         }
 

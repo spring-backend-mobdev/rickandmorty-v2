@@ -7,7 +7,6 @@ import cl.mobdev.challenge.gateway.model.ApiLocation;
 import cl.mobdev.challenge.gateway.model.ApiOrigin;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -18,16 +17,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class RickAndMortyGatewayTest {
 
     private String apiUrl = "http://some-url/";
-    private ApiCharacter characterMock;
     private ApiLocation apiLocation;
-    private Character expected;
-    private ApiOrigin apiOriginMock;
     private Location location;
 
     @InjectMocks
@@ -44,18 +39,18 @@ class RickAndMortyGatewayTest {
         this.rickAndMortyGateway = new RickAndMortyGateway(restTemplate,
                 apiUrl,
                 characterResponseMapper);
-        characterMock = new ApiCharacter();
         apiLocation = new ApiLocation();
-        expected = new Character();
-        apiOriginMock = new ApiOrigin();
         location = new Location();
     }
 
     @Test
     @MockitoSettings(strictness = Strictness.WARN)
-    @DisplayName("Should return character when call external api")
+    @DisplayName("Should call external api twice")
     void should_call_external_api_twice() {
         final int numberOfInvocationsOfRestTemplateExpected = 2;
+        ApiOrigin apiOriginMock = new ApiOrigin();
+        ApiCharacter characterMock = new ApiCharacter();
+        Character expected = new Character();
         String urlLocationMock = "http//some-location-resttemplate";
 
         apiOriginMock.setUrl(urlLocationMock);
@@ -81,15 +76,18 @@ class RickAndMortyGatewayTest {
 
         // THEN
         verify(restTemplate, times(numberOfInvocationsOfRestTemplateExpected))
-                .getForEntity(anyString(), any());   // anyString != eq("http//some-url/1")
+                .getForEntity(anyString(), any());
     }
 
     @Test
     @MockitoSettings(strictness = Strictness.WARN)
-    @DisplayName("Should return character when call mapper")
+    @DisplayName("Should call mapper once")
     void should_call_mapper_once() {
-        expected.setOrigin(location);
         final int numberOfInvocationsOfMapperExpected = 1;
+        Character expected = new Character();
+        ApiOrigin apiOriginMock = new ApiOrigin();
+        ApiCharacter characterMock = new ApiCharacter();
+        expected.setOrigin(location);
 
         String urlLocationMock = "http://some-location-mapper";
         apiOriginMock.setUrl(urlLocationMock);
@@ -115,32 +113,35 @@ class RickAndMortyGatewayTest {
 
         // THEN
         verify(characterResponseMapper, times(numberOfInvocationsOfMapperExpected))
-                .mapper(characterMock, apiLocation);               // Cuantas veces voy a llamar al mapper = 1 vez
-
+                .mapper(characterMock, apiLocation);
     }
 
     @Test
-    @MockitoSettings(strictness = Strictness.WARN)
-    void should_return_origin_unknown_when_url_is_empty() {
-
-        // Practice TDD
-        String urlLocationMock = "";
-        String expected = "unknown";
-        characterMock.setOrigin(null);
-        String idMock  = "";
-        apiOriginMock.setUrl(urlLocationMock);
-        apiOriginMock.setUrl("");
+    @DisplayName("Should call external api once when character url location is empty")
+    void should_call_external_api_once_when_character_url_location_is_empty() {
+        int numberOfInvocationsOfRestTemplateExpected = 1;
+        ApiCharacter apiCharacter = new ApiCharacter();
+        String id = "1";
+        Character characterMock = new Character();
+        characterMock.setId(Integer.parseInt(id));
+        characterMock.setName("Rick");
+        Location locationOrigin = new Location();
+        locationOrigin.setName("Mockito");
+        locationOrigin.setUrl("Unknown");
+        characterMock.setOrigin(locationOrigin);
 
         //GIVEN
-        when(restTemplate.getForEntity(characterMock + idMock, ApiCharacter.class))
-                .thenReturn(new ResponseEntity(characterMock, HttpStatus.OK));
+        when(restTemplate.getForEntity(apiUrl + id, ApiCharacter.class))
+                .thenReturn(new ResponseEntity(apiCharacter, HttpStatus.OK));
 
-        // WHEN
-        Character character = rickAndMortyGateway.getApiCharacter(idMock);
+        when(characterResponseMapper.mapper(apiCharacter, null))
+                .thenReturn(characterMock);
 
-        // THEN
-        assertEquals(expected, character.getOrigin().getName());
+        //WHEN
+        rickAndMortyGateway.getApiCharacter(id);
 
-        ArgumentCaptor<ApiCharacter> argument = ArgumentCaptor.forClass(ApiCharacter.class);
+        //THEN
+        verify(restTemplate, times(numberOfInvocationsOfRestTemplateExpected))
+                .getForEntity(anyString(), any());
     }
 }

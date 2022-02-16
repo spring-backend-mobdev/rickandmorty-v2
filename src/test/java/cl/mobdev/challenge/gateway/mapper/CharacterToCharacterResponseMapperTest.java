@@ -1,7 +1,6 @@
 package cl.mobdev.challenge.gateway.mapper;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ class CharacterToCharacterResponseMapperTest {
 
     @Test
     @DisplayName("")
-    void name() {
+    void return_ApiCharacter_when_() {
 
         // GIVEN
 
