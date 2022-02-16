@@ -80,4 +80,18 @@ public class Character {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", species='" + species + '\'' +
+                ", gender='" + gender + '\'' +
+                ", type='" + type + '\'' +
+                ", episode_count=" + episode_count +
+                ", origin=" + origin +
+                '}';
+    }
 }

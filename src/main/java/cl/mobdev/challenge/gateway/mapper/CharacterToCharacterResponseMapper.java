@@ -16,7 +16,7 @@ public class CharacterToCharacterResponseMapper {
         characterResponse.setStatus(apiCharacter.getStatus());
         characterResponse.setSpecies(apiCharacter.getSpecies());
         characterResponse.setType(apiCharacter.getType());
-        characterResponse.setEpisode_count(apiCharacter.getEpisode().size());
+        //characterResponse.setEpisode_count(apiCharacter.getEpisode().size());
 
         characterResponse.setOrigin(convertLocationToNull(apiLocation));
         return characterResponse;

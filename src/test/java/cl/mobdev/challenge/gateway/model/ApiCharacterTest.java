@@ -15,21 +15,6 @@ class ApiCharacterTest {
         apiCharacter = new ApiCharacter();
     }
 
-    @AfterEach
-    void tearDown() {
-
-    }
-
-    @BeforeAll
-    static void beforeAll() {
-
-    }
-
-    @AfterAll
-    static void afterAll() {
-
-    }
-
     @Test
     void getName_id_number_1() {
         apiCharacter.setName("Rick Sanchez");
@@ -56,65 +41,8 @@ class ApiCharacterTest {
         assertEquals(expected2, real2);
     }
 
-
-
     @Test
     void id_not_found() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name2() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name3() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name4() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name6() {
-
-        // GIVEN
-
-        // WHEN
-
-        // THEN
-
-    }
-
-    @Test
-    void name5() {
 
         // GIVEN
 

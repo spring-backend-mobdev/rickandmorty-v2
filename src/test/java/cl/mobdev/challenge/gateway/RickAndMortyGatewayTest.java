@@ -72,7 +72,7 @@ class RickAndMortyGatewayTest {
                 .thenReturn(new ResponseEntity(apiLocation, HttpStatus.OK));
 
         // WHEN
-        Character character = rickAndMortyGateway.getApiCharacter(idMock);
+        rickAndMortyGateway.getApiCharacter(idMock);
 
         // THEN
         verify(restTemplate, times(numberOfInvocationsOfRestTemplateExpected))

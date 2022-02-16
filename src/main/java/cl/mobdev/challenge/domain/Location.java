@@ -40,4 +40,14 @@ public class Location {
     public void setResidents(ArrayList<String> residents) {
         this.residents = residents;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", dimension='" + dimension + '\'' +
+                ", residents=" + residents +
+                '}';
+    }
 }
