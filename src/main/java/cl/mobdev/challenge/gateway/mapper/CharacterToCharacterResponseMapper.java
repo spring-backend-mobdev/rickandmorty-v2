@@ -25,6 +25,7 @@ public class CharacterToCharacterResponseMapper {
         locationResponse.setResidents(apiLocation.getResidents());
 
         characterResponse.setOrigin(locationResponse);
+
         return characterResponse;
     }
 }

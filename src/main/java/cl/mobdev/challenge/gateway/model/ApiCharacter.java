@@ -114,11 +114,3 @@ public class ApiCharacter {
         this.created = created;
     }
 }
-
-// Test
-// 1.- Testear nombre de cada personaje por id (Rick Sanchez = Id 1)
-// 2.- Testear nombre indistinamente May. o Min.
-// 3.- Id no encontrado (fuera de rango)
-// 4.- Verificar si Especies es: Human, Humanoid, Alien, Robot ....
-// 5.- Verificar si Gender es: Male, Female, GenderLess,
-// 6.-

@@ -35,8 +35,9 @@ public class RickAndMortyGateway {
         return character;
     }
 
+
     private ResponseEntity<ApiLocation> getApiLocation(ApiCharacter apiCharacter) {
-        if (null != apiCharacter.getOrigin() && !"".equals(apiCharacter.getOrigin().getUrl())) {
+        if (null != apiCharacter.getOrigin() && !"".equals(apiCharacter.getOrigin())) {
             return restTemplate.getForEntity(apiCharacter.getOrigin().getUrl(), ApiLocation.class);
         }
         return null;
