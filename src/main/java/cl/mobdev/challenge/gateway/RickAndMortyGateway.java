@@ -29,16 +29,19 @@ public class RickAndMortyGateway {
         ResponseEntity<ApiCharacter> apiCharacter = restTemplate
                 .getForEntity(apiUrl + id, ApiCharacter.class);
 
-        ResponseEntity<ApiLocation> apiLocation = getApiLocation(apiCharacter.getBody());
+        ApiLocation apiLocation = getApiLocation(apiCharacter.getBody());
+
         character = characterResponseMapper
-                .mapper(apiCharacter.getBody(), apiLocation.getBody());
+                .mapper(apiCharacter.getBody(), apiLocation);
+
         return character;
     }
 
-
-    private ResponseEntity<ApiLocation> getApiLocation(ApiCharacter apiCharacter) {
-        if (null != apiCharacter.getOrigin() && !"".equals(apiCharacter.getOrigin())) {
-            return restTemplate.getForEntity(apiCharacter.getOrigin().getUrl(), ApiLocation.class);
+    private ApiLocation getApiLocation(ApiCharacter apiCharacter) {
+        if (null != apiCharacter.getOrigin() && !"".equals(apiCharacter.getOrigin().getUrl())) {
+            ResponseEntity<ApiLocation> apiLocationResponseEntity =
+                    restTemplate.getForEntity(apiCharacter.getOrigin().getUrl(), ApiLocation.class);
+            return apiLocationResponseEntity.getBody();
         }
         return null;
     }

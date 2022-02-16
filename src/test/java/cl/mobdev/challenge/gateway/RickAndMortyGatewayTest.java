@@ -17,8 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,12 +60,12 @@ class RickAndMortyGatewayTest {
 
         apiOriginMock.setUrl(urlLocationMock);
         characterMock.setOrigin(apiOriginMock);
-
         characterMock.setId(1);
         characterMock.setName("Rick Sanchez");
         apiLocation.setName("Earth");
         apiLocation.setUrl(urlLocationMock);
         expected.setOrigin(location);
+
         // GIVEN
         String idMock = "1";
         when(restTemplate
@@ -77,6 +75,7 @@ class RickAndMortyGatewayTest {
         when(restTemplate
                 .getForEntity(urlLocationMock, ApiLocation.class))
                 .thenReturn(new ResponseEntity(apiLocation, HttpStatus.OK));
+
         // WHEN
         Character character = rickAndMortyGateway.getApiCharacter(idMock);
 
@@ -110,6 +109,7 @@ class RickAndMortyGatewayTest {
         when(restTemplate
                 .getForEntity(urlLocationMock, ApiLocation.class))
                 .thenReturn(new ResponseEntity(apiLocation, HttpStatus.OK));
+
         // WHEN
         rickAndMortyGateway.getApiCharacter(idMock);
 
@@ -122,6 +122,7 @@ class RickAndMortyGatewayTest {
     @Test
     @MockitoSettings(strictness = Strictness.WARN)
     void should_return_origin_unknown_when_url_is_empty() {
+
         // Practice TDD
         String urlLocationMock = "";
         String expected = "unknown";
@@ -134,7 +135,6 @@ class RickAndMortyGatewayTest {
         when(restTemplate.getForEntity(characterMock + idMock, ApiCharacter.class))
                 .thenReturn(new ResponseEntity(characterMock, HttpStatus.OK));
 
-
         // WHEN
         Character character = rickAndMortyGateway.getApiCharacter(idMock);
 
@@ -142,7 +142,5 @@ class RickAndMortyGatewayTest {
         assertEquals(expected, character.getOrigin().getName());
 
         ArgumentCaptor<ApiCharacter> argument = ArgumentCaptor.forClass(ApiCharacter.class);
-
-
     }
 }

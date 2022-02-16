@@ -18,14 +18,24 @@ public class CharacterToCharacterResponseMapper {
         characterResponse.setType(apiCharacter.getType());
         characterResponse.setEpisode_count(apiCharacter.getEpisode().size());
 
+        characterResponse.setOrigin(convertLocationToNull(apiLocation));
+        return characterResponse;
+    }
+
+    private Location convertLocationToNull(ApiLocation apiLocation) {
         Location locationResponse = new Location();
+
+        if (null == apiLocation || "".equals(apiLocation.getUrl())) {
+            locationResponse.setUrl("unknownNullOrEmpty");
+            locationResponse.setName("unknownNullOrEmpty");
+            locationResponse.setDimension("unknownNullOrEmpty");
+            return locationResponse;
+        }
+
         locationResponse.setUrl(apiLocation.getUrl());
         locationResponse.setName(apiLocation.getName());
         locationResponse.setDimension(apiLocation.getDimension());
         locationResponse.setResidents(apiLocation.getResidents());
-
-        characterResponse.setOrigin(locationResponse);
-
-        return characterResponse;
+        return locationResponse;
     }
 }

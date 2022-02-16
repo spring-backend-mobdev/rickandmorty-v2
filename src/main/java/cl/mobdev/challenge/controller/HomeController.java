@@ -20,7 +20,7 @@ public class HomeController {
     }
 
     @GetMapping("character/{id}")
-    public Character getExternalApi(@PathVariable String id){
+    public Character getExternalApi(@PathVariable String id) {
         return getCharacterUseCase.execute(id);
     }
 }

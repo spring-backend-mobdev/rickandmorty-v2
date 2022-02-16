@@ -4,6 +4,7 @@ import cl.mobdev.challenge.domain.Character;
 import cl.mobdev.challenge.usecase.GetCharacterUnknownUseCase;
 import cl.mobdev.challenge.usecase.GetCharacterUseCase;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,6 +32,7 @@ class HomeControllerTest {
     }
 
     @Test
+    @DisplayName("")
     void should_return_status_200_when_use_useCase() {
         int statusExpect = 200;
 
@@ -44,32 +46,10 @@ class HomeControllerTest {
 
         //THEN
         assertNotEquals(statusExpect, response.getStatusCodeValue(getCharacterUnknownUseCase));
-
     }
 
     @Test
+    @DisplayName("")
     void id_not_found() {
-
     }
-
-    @Test
-    void name3() {
-
-    }
-
-    @Test
-    void name4() {
-
-    }
-
-    @Test
-    void name6() {
-
-    }
-
-    @Test
-    void name5() {
-
-    }
-
 }
