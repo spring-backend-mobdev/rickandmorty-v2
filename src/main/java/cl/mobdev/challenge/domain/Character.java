@@ -2,6 +2,8 @@ package cl.mobdev.challenge.domain;
 
 import cl.mobdev.challenge.usecase.GetCharacterUnknownUseCase;
 
+import java.util.Objects;
+
 public class Character {
 
     private int id;
@@ -93,5 +95,21 @@ public class Character {
                 ", episode_count=" + episode_count +
                 ", origin=" + origin +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Character character = (Character) o;
+        return id == character.id && episode_count == character.episode_count && Objects.equals(name, character.name)
+                && Objects.equals(status, character.status) && Objects.equals(species, character.species) &&
+                Objects.equals(gender, character.gender) && Objects.equals(type, character.type) &&
+                Objects.equals(origin, character.origin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, status, species, gender, type, episode_count, origin);
     }
 }

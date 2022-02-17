@@ -1,6 +1,7 @@
 package cl.mobdev.challenge.domain;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Location {
 
@@ -49,5 +50,18 @@ public class Location {
                 ", dimension='" + dimension + '\'' +
                 ", residents=" + residents +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(name, location.name) && Objects.equals(url, location.url) && Objects.equals(dimension, location.dimension) && Objects.equals(residents, location.residents);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, url, dimension, residents);
     }
 }

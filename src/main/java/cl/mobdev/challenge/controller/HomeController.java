@@ -1,5 +1,6 @@
 package cl.mobdev.challenge.controller;
 
+import cl.mobdev.challenge.configuration.RickAndMortyService;
 import cl.mobdev.challenge.usecase.GetCharacterUseCase;
 import cl.mobdev.challenge.domain.Character;
 import cl.mobdev.challenge.usecase.IsCharactersEarthlingUseCase;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HomeController {
+public class HomeController implements RickAndMortyService {
 
     private final GetCharacterUseCase getCharacterUseCase;
     private final IsCharactersEarthlingUseCase charactersEarthlingUseCase;

@@ -6,6 +6,8 @@ import cl.mobdev.challenge.gateway.model.ApiCharacter;
 import cl.mobdev.challenge.gateway.model.ApiLocation;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class CharacterToCharacterResponseMapper {
 
@@ -14,9 +16,10 @@ public class CharacterToCharacterResponseMapper {
         characterResponse.setId(apiCharacter.getId());
         characterResponse.setName(apiCharacter.getName());
         characterResponse.setStatus(apiCharacter.getStatus());
+        characterResponse.setGender(apiCharacter.getGender());
         characterResponse.setSpecies(apiCharacter.getSpecies());
         characterResponse.setType(apiCharacter.getType());
-        //characterResponse.setEpisode_count(apiCharacter.getEpisode().size());
+        characterResponse.setEpisode_count(apiCharacter.getEpisode().size());
 
         characterResponse.setOrigin(convertLocationToNull(apiLocation));
         return characterResponse;
@@ -29,6 +32,7 @@ public class CharacterToCharacterResponseMapper {
             locationResponse.setUrl("unknown");
             locationResponse.setName("unknown");
             locationResponse.setDimension("unknown");
+            locationResponse.setResidents(new ArrayList<String>());
             return locationResponse;
         }
 

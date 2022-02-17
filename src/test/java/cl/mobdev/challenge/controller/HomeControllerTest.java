@@ -11,24 +11,31 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@WebMvcTest(HomeController.class)
 @ExtendWith(MockitoExtension.class)
 class HomeControllerTest {
 
     @InjectMocks
-    private HomeController homeController;  // La clase a testear
+    private HomeController homeController;
+
+    @Autowired
+    private MockMvc mockMvc;
 
     @Mock
-    private GetCharacterUseCase getCharacterUseCase;  // dependecies
+    private GetCharacterUseCase getCharacterUseCase;  // dependecies of Controller
 
     @Mock
     private GetCharacterUnknownUseCase getCharacterUnknownUseCase;
 
     @BeforeEach
     void setUp() {
-       //homeController = new HomeController(); // va a crear una nueva instancia antes de cada test
+       //homeController = new HomeController(getCharacterUnknownUseCase.execute()); // va a crear una nueva instancia antes de cada test
     }
 
     @Test
@@ -49,7 +56,20 @@ class HomeControllerTest {
     }
 
     @Test
-    @DisplayName("")
-    void id_not_found() {
+    @DisplayName("Return Controller")
+    void return_controller() {
+
+
+        // GIVEN
+
+
+        // THEN
+
+
+        // WHEN
+
+
+
+
     }
 }

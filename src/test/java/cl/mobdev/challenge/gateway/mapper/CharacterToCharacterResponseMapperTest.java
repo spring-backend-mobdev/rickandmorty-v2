@@ -41,12 +41,12 @@ class CharacterToCharacterResponseMapperTest {
         origin.setName("Earth");
         characterExpected.setOrigin(origin);
         characterExpected.setEpisode_count(1);
-        episode.add("www.rickandmorty.org");
 
         // GIVEN
         apiCharacter.setId(1);
         apiCharacter.setName("Rick Sanchez");
         apiLocation.setName("Earth");
+        episode.add("www.rickandmorty.org");
         apiCharacter.setEpisode(episode);
 
         // WHEN
@@ -55,6 +55,7 @@ class CharacterToCharacterResponseMapperTest {
 
         // THEN
         assertEquals(characterExpected, character);
+        assertNotNull(character);
     }
 
     @Test
@@ -81,7 +82,7 @@ class CharacterToCharacterResponseMapperTest {
                 .mapper(apiCharacter, apiLocation);
 
         // THEN
-        assertEquals(apiLocationExpected, character);
+        assertEquals(apiLocationExpected.getName(), character.getName());
     }
 
     @Test
