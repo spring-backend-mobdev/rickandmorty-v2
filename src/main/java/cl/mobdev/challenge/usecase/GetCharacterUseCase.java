@@ -1,12 +1,13 @@
 package cl.mobdev.challenge.usecase;
 
+import cl.mobdev.challenge.configuration.GetCharacter;
 import cl.mobdev.challenge.domain.Character;
 import cl.mobdev.challenge.gateway.RickAndMortyGateway;
 import cl.mobdev.challenge.usecase.exception.DeadException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetCharacterUseCase {
+public class GetCharacterUseCase implements GetCharacter {
 
     private final RickAndMortyGateway rickAndMortyGateway;
 

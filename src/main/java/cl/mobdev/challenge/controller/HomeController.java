@@ -1,27 +1,22 @@
 package cl.mobdev.challenge.controller;
 
-import cl.mobdev.challenge.configuration.RickAndMortyService;
-import cl.mobdev.challenge.usecase.GetCharacterUseCase;
+import cl.mobdev.challenge.configuration.GetCharacter;
 import cl.mobdev.challenge.domain.Character;
-import cl.mobdev.challenge.usecase.IsCharactersEarthlingUseCase;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HomeController implements RickAndMortyService {
+public class HomeController {
 
-    private final GetCharacterUseCase getCharacterUseCase;
-    private final IsCharactersEarthlingUseCase charactersEarthlingUseCase;
+    private final GetCharacter getCharacter;
 
-    public HomeController(GetCharacterUseCase getCharacterUseCase,
-                          IsCharactersEarthlingUseCase charactersEarthlingUseCase) {
-        this.getCharacterUseCase = getCharacterUseCase;
-        this.charactersEarthlingUseCase = charactersEarthlingUseCase;
+    public HomeController(GetCharacter getCharacter) {
+        this.getCharacter = getCharacter;
     }
 
     @GetMapping("character/{id}")
     public Character getExternalApi(@PathVariable String id) {
-        return getCharacterUseCase.execute(id);
+        return getCharacter.execute(id);
     }
 }
